@@ -1,7 +1,7 @@
 {
-	"name": "shroomok/mediawiki-discord-auth",
+	"name": "nashwind/mediawiki-discord-auth",
 	"description": "Allow users from specified Discord server access to your mediawiki instance",
-	"homepage": "https://github.com/shroomok/mediawiki-DiscordAuth",
+	"homepage": "https://github.com/nashwind/mediawiki-DiscordAuth",
 	"authors": [
 		{
 			"name": "Shroomok",
@@ -17,7 +17,7 @@
 	},
 	"repositories": [
 		{
-			"url": "https://github.com/shroomok/restcord.git",
+			"url": "https://github.com/nashwind/restcord.git",
 			"type": "git"
 		}
 	],
