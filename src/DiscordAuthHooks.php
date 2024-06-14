@@ -249,8 +249,7 @@ class DiscordAuthHooks {
         $member = $discordClient->guild->getGuildMember(['guild.id' => $guildId, 'user.id' => (int) $discordUserId]);
         $displayName = $member->nick ?? $member->user->username;
 
-        $dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-        $dbr = $dbProvider->getPrimaryDatabase();
+        $dbr = wfGetDB( DB_MASTER );
         $conditions = ['user_name' => $displayName];
         if ($currentUserId !== null) {
             $conditions[] = 'user_id != ' . intval($currentUserId);
@@ -283,8 +282,7 @@ class DiscordAuthHooks {
     }
 
     private function getExistingUserByDiscordId($discordUserId) {
-        $dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-        $dbr = $dbProvider->getPrimaryDatabase();
+        $dbr = wfGetDB( DB_MASTER );
         return $dbr->selectRow(
             'user',
             ['user_id', 'user_name', 'user_real_name'],

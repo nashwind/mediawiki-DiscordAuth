@@ -127,8 +127,7 @@ class DiscordAuth extends AuthProvider {
         $member = $discordClient->guild->getGuildMember(['guild.id' => $guildId, 'user.id' => (int) $discordUserId]);
         $displayName = $member->nick ?? $member->user->username;
 
-        $dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-        $dbr = $dbProvider->getPrimaryDatabase();
+        $dbr = wfGetDB( DB_MASTER );
         $existingUser = $dbr->selectRow(
             'user',
             ['user_name'],
@@ -156,8 +155,7 @@ class DiscordAuth extends AuthProvider {
     }
 
     private function getExistingUserByDiscordId($discordUserId) {
-        $dbProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-        $dbr = $dbProvider->getPrimaryDatabase();
+        $dbr = wfGetDB( DB_MASTER );
         return $dbr->selectRow(
             'user',
             ['user_id', 'user_name', 'user_real_name'],
