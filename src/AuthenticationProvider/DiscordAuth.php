@@ -164,6 +164,7 @@ class DiscordAuth extends AuthProvider {
             ['user_id' => $discordUserId],
             __METHOD__
         );
+    }
 
     /**
      * @inheritDoc
